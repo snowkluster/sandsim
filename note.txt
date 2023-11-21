@@ -1,0 +1,3 @@
+g++ -std=gnu++17 main.cpp color.cpp particle.cpp particle_table.cpp -lfreeglut -lopengl32 -lglfw3
+
+to compile without using Makefile
