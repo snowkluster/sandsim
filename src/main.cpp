@@ -179,7 +179,7 @@ void idle() {
 void onMouse(int button, int state, int x, int y) {
     if (x > SIZE_OBJ || x < 0 || y > SIZE_OBJ || y < 0) {return;}
     unsigned int x1 = round(x/PARTICLE_SIZE_OBJ);
-    float y1 = y/PARTICLE_SIZE_OBJ;
+    float y1 = float(y)/PARTICLE_SIZE_OBJ;
     y1 = y1 / PARTICLE_AMOUNT - 0.5;
     y1 = round((-y1 + 0.5) * PARTICLE_AMOUNT) - 1;
     auto p = Particle::Air;
@@ -206,7 +206,7 @@ void onMotion(int x, int y) {
     if (get<2>(click)) {
         if (x > SIZE_OBJ || x < 0 || y > SIZE_OBJ || y < 0) {return;}
         unsigned int x1 = round(x/PARTICLE_SIZE_OBJ);
-        float y1 = y/PARTICLE_SIZE_OBJ;
+        float y1 = float(y)/PARTICLE_SIZE_OBJ;
         y1 = y1 / PARTICLE_AMOUNT - 0.5;
         y1 = round((-y1 + 0.5) * PARTICLE_AMOUNT) - 1;
         click = tuple<unsigned int,unsigned int,bool,Particle (*)(unsigned int,unsigned int)>(x1,y1,true,get<3>(click));
