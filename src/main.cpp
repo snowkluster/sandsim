@@ -123,24 +123,12 @@ void Particle::update() {
     
 }
 
-/*void ParticleTable::draw() { 
-    for (auto& a : table) {
-        auto v = a.second;
-        if (v.name != "air") {
-            v.draw();
-        }
-    }
-
-    
-}*/
-
 void draw(void)
 {
     glClear(GL_COLOR_BUFFER_BIT);
     
     glColor3d(1.0,1.0,1.0);
     
-    //(*particles).draw();
     glDrawPixels(SIZE_OBJ,SIZE_OBJ,GL_RGB, GL_UNSIGNED_BYTE, buffer);
     
     text(-1.0f, 0.95f, GLUT_BITMAP_HELVETICA_12,"FPS: " + to_string(int(round(fps))));
@@ -161,15 +149,15 @@ void tick() {
 
 void idle() {
     frame++;
-	timeNow=glutGet(GLUT_ELAPSED_TIME);
+    timeNow=glutGet(GLUT_ELAPSED_TIME);
 
-	if (timeNow - timeBase > MS_P_TICK) {
-		fps = frame*1000.0/(timeNow-timeBase);
-	 	timeBase = timeNow;
-		frame = 0;
+    if (timeNow - timeBase > MS_P_TICK) {
+        fps = frame*1000.0/(timeNow-timeBase);
+         timeBase = timeNow;
+        frame = 0;
 
         tick();
-	}
+    }
     if (get<2>(click)) {
         unsigned int x=get<0>(click), y=get<1>(click);
         (*particles).set(x, y, get<3>(click)(x, y));
@@ -248,9 +236,7 @@ int main(int argc, char *argv[])
     glutMotionFunc(onMotion);
     glutDisplayFunc(draw);
     glutIdleFunc(idle);
-    //glutReshapeFunc(reSIZE_OBJ);
-    
-    //glutTimerFunc(MS_P_TICK, tick, 0);
+
     glClearColor(0.0f,0.0f,0.0f,1.0f);
     glutMainLoop();
     return 0;
